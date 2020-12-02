@@ -1,10 +1,15 @@
-# Getting Started with Create React App
+# Getting Started
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Dev mode
 
 1. Make sure you are able to run the graphql api docker image: chrismns/tech-test-mock-server:0.1.0 (https://hub.docker.com/r/chrismns/tech-test-mock-server) port 3001.
 2. Run `yarn` inside the root of the directory.
 3. Run `yarn start` to start the react app on localhost:3000
+
+## Run build on docker
+Run `docker-compose up` in root directory.
 
 ## Available Scripts
 
