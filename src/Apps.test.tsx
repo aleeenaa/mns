@@ -47,7 +47,6 @@ it('String is converted into an array with badges in priority order', () => {
     const input = 'sale:PRIORITY_ACCESS||loyalty:SLOTTED,BONUS'.split('||');
     const expectedOutput = ['PRIORITY_ACCESS', 'SLOTTED', 'BONUS'];
     const actualOutput = getBadgeOrder(input);
-    console.log(actualOutput);
     assert.deepStrictEqual(actualOutput, expectedOutput);
 });
 
@@ -71,14 +70,23 @@ it('getBadgeMap returns a map of user badges', () => {
         ['5', { type: 'BONUS', icon: 'loyalty' }]
     ]);
     const actualOutput = getBadgeMap(input, badges);
-    console.log(actualOutput);
     assert.deepStrictEqual(actualOutput, expectedOutput);
 });
 
-it('String is converted into an array with badges in priority order', () => {
-    const input = 'sale:PRIORITY_ACCESS||loyalty:SLOTTED,BONUS'.split('||');
-    const expectedOutput = ['PRIORITY_ACCESS', 'SLOTTED', 'BONUS'];
-    const actualOutput = getBadgeOrder(input);
-    console.log(actualOutput);
+it('getFilteredBadges returns a filtered down map specific to product', () => {
+    const offerIDs = ['5', '2', '4'];
+    const input = new Map([
+        ['1', { type: 'REDUCED', icon: 'sale' }],
+        ['2', { type: 'BONUS', icon: 'loyalty' }],
+        ['3', { type: 'PRIORITY_ACCESS', icon: 'sale' }],
+        ['4', { type: 'SLOTTED', icon: 'loyalty' }],
+        ['5', { type: 'BONUS', icon: 'loyalty' }]
+    ]);
+    const expectedOutput = new Map([
+        ['2', { type: 'BONUS', icon: 'loyalty' }],
+        ['4', { type: 'SLOTTED', icon: 'loyalty' }],
+        ['5', { type: 'BONUS', icon: 'loyalty' }]
+    ]);
+    const actualOutput = getFilteredBadges(input, offerIDs);
     assert.deepStrictEqual(actualOutput, expectedOutput);
 });
