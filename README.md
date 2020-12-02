@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+1. Make sure you are able to run the graphql api docker image: chrismns/tech-test-mock-server:0.1.0 (https://hub.docker.com/r/chrismns/tech-test-mock-server) port 3001.
+2. Run `yarn` inside the root of the directory.
+3. Run `yarn start` to start the react app on localhost:3000
+
 ## Available Scripts
 
 In the project directory, you can run:

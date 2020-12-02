@@ -2,10 +2,6 @@ import React, { useState } from 'react';
 import { useQuery, gql } from '@apollo/client';
 import { ProductCard } from './ProductCard';
 
-type props = {
-    userId: string;
-};
-
 const GET_PRODUCTS = gql`
     {
         productList {
@@ -64,15 +60,14 @@ export const getBadgeMap = (offers: any, badges: any) => {
     }, new Map());
 };
 
-export const ProductList = (props: any) => {
-    const [userId, setUserId] = useState();
-    if (!userId || userId != props.userId) setUserId(props.userId);
+export const ProductList = () => {
+    const [userId, setUserId] = useState<string>('1');
 
     const { loading, error, data } = useQuery(GET_PRODUCTS);
     const { loading: userLoading, error: userError, data: userData } = useQuery(
         GET_USER,
         {
-            variables: { id: userId ? userId : props.userId }
+            variables: { id: userId }
         }
     );
 
@@ -85,6 +80,25 @@ export const ProductList = (props: any) => {
 
     return (
         <div>
+            <div>
+                <label className="slds-form-element__label" htmlFor="select-01">
+                    User:
+                </label>
+                <select
+                    name="user"
+                    id="user"
+                    className="slds-select"
+                    onChange={(e) => setUserId(e.target.value)}
+                >
+                    <optgroup label="Select User">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </optgroup>
+                </select>
+            </div>
             <div className="slds-grid slds-wrap slds-p-around--large ">
                 {data.productList.map((product: any) => (
                     <ProductCard
