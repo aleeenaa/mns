@@ -1,0 +1,14 @@
+version: '3' #docker-compose version
+services:  #Services are your different containers
+  react_app: #First Container, containing react app
+    build: . #Saying that all of my source files are at the root path
+    volumes: #volume are for hot reload for exemple
+      - "./app:/src/app"
+    ports:   #binding the host port with the machine
+      - "3000:3000"
+    links:   #Linking
+      - graphql
+  graphql: #declaration of the mongodb container
+    image: chrismns/tech-test-mock-server:0.1.0
+    ports:
+      - "3001:3001"
