@@ -83,10 +83,6 @@ export const ProductList = (props: any) => {
     const badgeOrder = getBadgeOrder(badges);
     const badgeMap = getBadgeMap(userData.user.offers, badges);
 
-    console.log('userData: ', userData);
-    console.log('badgeOrder: ', badgeOrder);
-    console.log('badgeMap: ', badgeMap);
-
     return (
         <div>
             <div className="slds-grid slds-wrap slds-p-around--large ">

@@ -9,7 +9,7 @@ export default function App() {
     return (
         <div className="App">
             <header className="App-header">
-                M&S AMS{' '}
+                M&S AMS
                 <div>
                     <label
                         className="slds-form-element__label"
